@@ -5,3 +5,7 @@ seaborn
 matplotlib
 jupyter
 notebook
+fastapi
+uvicorn
+joblib
+pydantic

@@ -3,11 +3,12 @@ FROM python:3.10-slim
 WORKDIR /app
 
 COPY requirements.txt .
-
 RUN pip install -r requirements.txt
 
 COPY . .
 
-EXPOSE 80
+RUN python train_model.py
 
-CMD ["jupyter", "notebook", "--port", "80", "--no-browser", "--ip", "0.0.0.0", "--allow-root", "--NotebookApp.token=''", "--NotebookApp.password=''"]
+EXPOSE 8000
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
